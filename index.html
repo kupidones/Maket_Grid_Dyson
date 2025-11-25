@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dyson - Innovative Hair Care</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: #f8f8f8;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      header {
+        background-color: #000;
+        color: white;
+        padding: 20px 0;
+        border-bottom: 3px solid #ff6b00;
+      }
+
+      .header-top {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .logo {
+        font-size: 28px;
+        font-weight: bold;
+        color: #ff6b00;
+      }
+
+      .logo span {
+        color: white;
+      }
+
+      .search-bar {
+        display: flex;
+      }
+
+      .search-bar input {
+        padding: 8px 12px;
+        border: none;
+        border-radius: 4px 0 0 4px;
+        width: 200px;
+        background: #333;
+        color: white;
+      }
+
+      .search-bar button {
+        background-color: #ff6b00;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .search-bar button:hover {
+        background-color: #e55a00;
+      }
+
+      nav ul {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        list-style: none;
+        gap: 5px;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        padding: 10px 5px;
+        display: block;
+        text-align: center;
+        transition: all 0.3s;
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      nav a:hover {
+        background-color: #ff6b00;
+        transform: translateY(-2px);
+      }
+
+      .hero {
+        background: linear-gradient(135deg, #000 0%, #333 100%);
+        color: white;
+        padding: 60px 0;
+        margin-bottom: 30px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 100%;
+        background: url("https://images.unsplash.com/photo-1605497788044-5a32c7078486?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80")
+          center/cover;
+        opacity: 0.9;
+      }
+
+      .hero-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+        margin-bottom: 15px;
+        color: #ff6b00;
+      }
+
+      .hero p {
+        font-size: 18px;
+        opacity: 0.9;
+        margin-bottom: 20px;
+      }
+
+      .hero-image {
+        background: url("https://images.unsplash.com/photo-1594736797933-d0ea3ff8db41?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80")
+          center/cover;
+        height: 300px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        color: white;
+        box-shadow: 0 10px 30px rgba(255, 107, 0, 0.3);
+        position: relative;
+      }
+
+      .hero-image::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          45deg,
+          rgba(255, 107, 0, 0.3),
+          rgba(255, 140, 0, 0.3)
+        );
+        border-radius: 10px;
+      }
+
+      .main-content {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 30px;
+        margin-bottom: 40px;
+      }
+
+      .services {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+
+      .service-item {
+        background-color: white;
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        transition: transform 0.3s, box-shadow 0.3s;
+        border-top: 3px solid #ff6b00;
+      }
+
+      .service-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(255, 107, 0, 0.2);
+      }
+
+      .service-item i {
+        font-size: 32px;
+        color: #ff6b00;
+        margin-bottom: 15px;
+      }
+
+      .service-item h3 {
+        color: #000;
+        margin-bottom: 10px;
+        font-size: 16px;
+      }
+
+      .service-item p {
+        font-size: 14px;
+        color: #666;
+      }
+
+      .about {
+        background-color: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+        border-left: 4px solid #ff6b00;
+        background-image: url("https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80");
+        background-size: 200px;
+        background-repeat: no-repeat;
+        background-position: right 30px center;
+      }
+
+      .about h2 {
+        color: #000;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #ff6b00;
+        font-size: 24px;
+      }
+
+      .about p {
+        margin-bottom: 20px;
+        color: #555;
+        line-height: 1.8;
+        max-width: 70%;
+      }
+
+      .read-more {
+        display: inline-block;
+        background-color: #ff6b00;
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: 600;
+        transition: background-color 0.3s;
+      }
+
+      .read-more:hover {
+        background-color: #e55a00;
+      }
+
+      .ceo-section {
+        background-color: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+        border-right: 4px solid #ff6b00;
+        background-size: 120px;
+        background-repeat: no-repeat;
+        background-position: right 30px bottom 30px;
+      }
+
+      .ceo-section h2 {
+        color: #000;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #ff6b00;
+        font-size: 24px;
+      }
+
+      .ceo-quote {
+        font-style: italic;
+        margin-bottom: 15px;
+        color: #555;
+        line-height: 1.8;
+        font-size: 16px;
+        background: url("https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80")
+          no-repeat left top;
+        padding-left: 50px;
+        background-size: 40px;
+        min-height: 40px;
+        display: flex;
+        align-items: center;
+      }
+
+      .ceo-name {
+        font-weight: bold;
+        color: #ff6b00;
+        font-size: 16px;
+        background: url("https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=50&q=80")
+          no-repeat left center;
+        padding-left: 60px;
+        background-size: 50px;
+        min-height: 50px;
+        display: flex;
+        align-items: center;
+      }
+
+      .sidebar {
+        display: grid;
+        grid-template-rows: auto auto auto;
+        gap: 30px;
+      }
+
+      .sidebar-section {
+        background-color: white;
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        border-top: 3px solid #ff6b00;
+      }
+
+      .technology-section {
+        background-image: url("https://images.unsplash.com/photo-1558618066-6aac1c0cff68?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80");
+        background-size: 150px;
+        background-repeat: no-repeat;
+        background-position: right 20px center;
+      }
+
+      .research-section {
+        background-image: url("");
+        background-size: 120px;
+        background-repeat: no-repeat;
+        background-position: right 20px bottom 20px;
+      }
+
+      .global-section {
+        background-image: url("");
+        background-size: 130px;
+        background-repeat: no-repeat;
+        background-position: right 20px center;
+      }
+
+      .sidebar-section h2 {
+        color: #000;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #ff6b00;
+        font-size: 20px;
+      }
+
+      .sidebar-section p {
+        color: #555;
+        margin-bottom: 15px;
+        font-size: 14px;
+        line-height: 1.7;
+        max-width: 70%;
+      }
+
+      .sidebar-section h3 {
+        color: #ff6b00;
+        margin: 15px 0 10px;
+        font-size: 16px;
+        max-width: 70%;
+      }
+
+      footer {
+        background-color: #000;
+        color: white;
+        padding: 40px 0 20px;
+        border-top: 3px solid #ff6b00;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 30px;
+        margin-bottom: 30px;
+      }
+
+      .footer-section h3 {
+        margin-bottom: 15px;
+        color: #ff6b00;
+        font-size: 18px;
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 8px;
+      }
+
+      .footer-links a {
+        color: #ddd;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-links a:hover {
+        color: #ff6b00;
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 15px;
+        margin-top: 15px;
+      }
+
+      .social-icons a {
+        color: white;
+        font-size: 20px;
+        transition: all 0.3s;
+        background: #333;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .social-icons a:hover {
+        color: #ff6b00;
+        transform: translateY(-3px);
+        background: #444;
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid #333;
+        color: #aaa;
+        font-size: 14px;
+      }
+
+      .product-showcase {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin: 30px 0;
+      }
+
+      .product-card {
+        background: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+      }
+
+      .product-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .product-image {
+        height: 200px;
+        background: linear-gradient(45deg, #ff6b00, #ff8c00);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 18px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .product-image::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.1);
+      }
+
+      .product-1 {
+        background: url("https://images.unsplash.com/photo-1560743641-3914f2c45636?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80")
+          center/cover;
+      }
+
+      .product-2 {
+        background: url("https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80")
+          center/cover;
+      }
+
+      .product-3 {
+        background: url("https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80")
+          center/cover;
+      }
+
+      .product-info {
+        padding: 20px;
+      }
+
+      .product-info h3 {
+        color: #000;
+        margin-bottom: 10px;
+      }
+
+      .product-info p {
+        color: #666;
+        font-size: 14px;
+      }
+
+      .innovation-showcase {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        margin: 40px 0;
+      }
+
+      .innovation-card {
+        background: white;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        border-top: 4px solid #ff6b00;
+      }
+
+      .innovation-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 20px;
+      }
+
+      .innovation-card h3 {
+        color: #000;
+        margin-bottom: 15px;
+        font-size: 20px;
+      }
+
+      .innovation-card p {
+        color: #666;
+        line-height: 1.6;
+      }
+
+      @media (max-width: 992px) {
+        .main-content {
+          grid-template-columns: 1fr;
+        }
+
+        .services {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .product-showcase {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .innovation-showcase {
+          grid-template-columns: 1fr;
+        }
+
+        .about p,
+        .sidebar-section p,
+        .sidebar-section h3 {
+          max-width: 100%;
+        }
+
+        .about,
+        .ceo-section {
+          background-image: none;
+        }
+      }
+
+      @media (max-width: 768px) {
+        nav ul {
+          grid-template-columns: repeat(4, 1fr);
+        }
+
+        .hero-content {
+          grid-template-columns: 1fr;
+        }
+
+        .hero::before {
+          display: none;
+        }
+
+        .services {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr;
+        }
+
+        .header-top {
+          grid-template-columns: 1fr;
+          gap: 15px;
+        }
+
+        .search-bar input {
+          width: 100%;
+        }
+
+        .product-showcase {
+          grid-template-columns: 1fr;
+        }
+
+        .ceo-quote,
+        .ceo-name {
+          background: none;
+          padding-left: 0;
+          min-height: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="header-top">
+          <div class="logo">DYSON<span>HAIR</span></div>
+          <div class="search-bar">
+            <input type="text" placeholder="Search products..." />
+            <button>GO</button>
+          </div>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="#">HOME</a></li>
+            <li><a href="#">ABOUT US</a></li>
+            <li><a href="#">PRODUCTS</a></li>
+            <li><a href="#">TECHNOLOGY</a></li>
+            <li><a href="#">SUPPORT</a></li>
+            <li><a href="#">PROJECTS</a></li>
+            <li><a href="#">CAREERS</a></li>
+            <li><a href="#">CONTACT</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div>
+            <h1>REVOLUTIONARY HAIR CARE TECHNOLOGY</h1>
+            <p>
+              Experience the future of hair styling with Dyson's innovative
+              engineering.
+            </p>
+            <a href="#" class="read-more">Discover More</a>
+          </div>
+          <div class="hero-image">
+            <i
+              class="fas fa-wind"
+              style="font-size: 48px; position: relative; z-index: 2"
+            ></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="services">
+        <div class="service-item">
+          <i class="fas fa-fan"></i>
+          <h3>ADVANCED AIR TECHNOLOGY</h3>
+          <p>Intelligent heat control for healthier hair</p>
+        </div>
+        <div class="service-item">
+          <i class="fas fa-magic"></i>
+          <h3>PRECISE STYLING</h3>
+          <p>Professional results at home</p>
+        </div>
+        <div class="service-item">
+          <i class="fas fa-bolt"></i>
+          <h3>FAST DRYING</h3>
+          <p>High velocity airflow technology</p>
+        </div>
+        <div class="service-item">
+          <i class="fas fa-shield-alt"></i>
+          <h3>HEAT PROTECTION</h3>
+          <p>Prevents extreme heat damage</p>
+        </div>
+      </div>
+
+      <div class="product-showcase">
+        <div class="product-card">
+          <div class="product-image product-1">Supersonic Hair Dryer</div>
+          <div class="product-info">
+            <h3>DYSON SUPERSONIC</h3>
+            <p>Professional hair dryer with intelligent heat control</p>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image product-2">Airwrap Styler</div>
+          <div class="product-info">
+            <h3>DYSON AIRWRAP</h3>
+            <p>Style without extreme heat using airwrap technology</p>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image product-3">Corrale Straightener</div>
+          <div class="product-info">
+            <h3>DYSON CORRALE</h3>
+            <p>Flexible plates for 50% less hair damage</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="innovation-showcase">
+        <div class="innovation-card">
+          <img
+            src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+            alt="Research Lab"
+          />
+          <h3>INNOVATION LAB</h3>
+          <p>
+            Our state-of-the-art research facilities where we test every product
+            with scientific precision
+          </p>
+        </div>
+        <div class="innovation-card">
+          <img
+            src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+            alt="Engineering"
+          />
+
+          <h3>PRECISION ENGINEERING</h3>
+          <p>
+            Every component is meticulously designed and tested for optimal
+            performance
+          </p>
+        </div>
+      </div>
+
+      <div class="main-content">
+        <div class="content-left">
+          <section class="about">
+            <h2>ABOUT DYSON TECHNOLOGY</h2>
+            <div class="about-content">
+              <p>
+                Dyson hair care represents the pinnacle of engineering
+                innovation in personal care. Our research centers have spent
+                years understanding hair science to develop products that
+                protect hair health while delivering exceptional styling
+                performance.
+              </p>
+              <p>
+                Using advanced digital motors and air multiplier technology,
+                we've revolutionized how people dry and style their hair,
+                eliminating the need for extreme heat that causes long-term
+                damage.
+              </p>
+              <a href="#" class="read-more">Learn More</a>
+            </div>
+          </section>
+
+          <section class="ceo-section">
+            <h2>A WORD FROM OUR FOUNDER</h2>
+            <p class="ceo-quote">
+              "We started with a simple question: why does hair technology
+              remain largely unchanged for decades? Our engineers spent years
+              researching hair at a microscopic level, developing entirely new
+              approaches that protect hair while delivering beautiful results.
+              The orange you see represents our passion for innovation that
+              truly makes a difference."
+            </p>
+            <p class="ceo-name">James Dyson, Founder & Chief Engineer</p>
+          </section>
+        </div>
+
+        <div class="sidebar">
+          <section class="sidebar-section technology-section">
+            <h2>OUR TECHNOLOGY</h2>
+            <p>
+              Dyson's hair care technology is built on four key innovations: the
+              V9 digital motor, Air Multiplier technology, intelligent heat
+              control, and magnetic attachments.
+            </p>
+            <h3>V9 DIGITAL MOTOR</h3>
+            <p>
+              The smallest, lightest, fastest digital motor fitted in a hair
+              dryer.
+            </p>
+            <a href="#" class="read-more">Read more</a>
+          </section>
+
+          <section class="sidebar-section research-section">
+            <h2>RESEARCH & DEVELOPMENT</h2>
+            <div class="team-content">
+              <h3>24/7 INNOVATION</h3>
+              <p>
+                Our team of engineers and scientists work continuously to push
+                the boundaries of what's possible in hair care technology,
+                testing over 1,000 miles of human hair.
+              </p>
+            </div>
+          </section>
+
+          <section class="sidebar-section global-section">
+            <h2>GLOBAL REACH</h2>
+            <div class="clients-content">
+              <h3>WORLDWIDE IMPACT</h3>
+              <p>
+                Dyson hair care products are trusted by millions worldwide, with
+                research centers in the UK, Singapore, and the Philippines
+                driving continuous innovation.
+              </p>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>TECHNOLOGY UPDATES</h3>
+            <p>
+              23 OCT<br />New research reveals our latest breakthrough in heat
+              control technology, reducing potential damage by 75% compared to
+              conventional styling tools.
+            </p>
+          </div>
+          <div class="footer-section">
+            <h3>PRODUCTS</h3>
+            <div class="sitemap-links">
+              <ul class="footer-links">
+                <li><a href="#">Hair Dryers</a></li>
+                <li><a href="#">Stylers</a></li>
+                <li><a href="#">Straighteners</a></li>
+                <li><a href="#">Accessories</a></li>
+                <li><a href="#">Support</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-section">
+            <h3>FOLLOW US</h3>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>
+            Copyright © 2023 Dyson Hair Care. Innovative engineering for
+            beautiful hair.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
